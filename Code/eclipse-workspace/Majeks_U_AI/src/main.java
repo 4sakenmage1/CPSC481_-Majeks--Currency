@@ -10,15 +10,16 @@ public class main {
 	static double[] dollarDataSet = { 1,0.91,106.82,0.81,1.48,1.33,1,
 			7.84,1.58,9.84,1196.35,1.38,9.09,19.54,71.01,64.72,15.07,5.71,4.05 };
 	static double[][] conversionTable = new double[dollarDataSet.length][dollarDataSet.length];
+	
 	//static FileInputStream in = null;
-	static FileWriter out = null;
+    static FileWriter out = null;
 	
 	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 
 		Scanner inputScanner = new Scanner(System.in); // input
-		DecimalFormat dtf4 = new DecimalFormat("#.####");
+		DecimalFormat dtf4 = new DecimalFormat("#.###");
 		
 		
 		
@@ -65,13 +66,7 @@ public class main {
 		
 		
 		//File Creation and access
-				File fileName = new File("Values.csv");
-				if(fileName.createNewFile()) {
-					System.out.println("Values.csv Created!");
-				}
-				else {
-					System.out.println("Values.csv Already Exists!");
-				}
+		out = new FileWriter("Values.csv");
 				
 		for (int row = 0; row < 19; row++)
 		{
@@ -79,16 +74,19 @@ public class main {
 			{
 				
 				System.out.print("{"+ dtf4.format(conversionTable[row][col]) + "}, ");
-				//out.write(String.valueOf(conversionTable[row][col]));
-				if(col != 19 && row != 19){
-					//out.write(",");
-					}
+				out.write(String.valueOf(conversionTable[row][col]));
+				
+				if(col != 19 && row != 19)
+				{
+					out.write(",");
+				}
 
 			}
-			//out.write("\n");
+			out.write("\n");
 			System.out.println();
 		}
-		//out.close();
+		
+		out.close();
 		System.out.println("File Closed!");
 
 	}
