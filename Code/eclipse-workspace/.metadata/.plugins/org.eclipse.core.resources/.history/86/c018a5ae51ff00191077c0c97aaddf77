@@ -1,0 +1,113 @@
+package Application;
+
+import java.util.*;
+
+public class Scaling_Vlaues_Ai {
+	
+	// Function returns the weighted value of the scaler based on number of occurrences
+	public static double Scaler(int count) {
+		double scaler = 0.0;
+			
+		if (count  < 6 ) {
+			scaler = .5;
+		}
+		else if(count < 11) {
+			scaler = 1.0;
+		}
+		else if(count < 21) {
+			scaler = 2.5;
+		}
+		else if(count < 51) {
+			scaler = 5.0;
+		}
+		else if (count < 101) {
+			scaler = 10.0;
+		}
+		else {
+			scaler = 15.0;
+		}
+		return scaler;
+	}
+			
+			// Main function
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+				
+		//Scanner cin = new Scanner(System.in);
+		// Declare variables used to generate a random input value for this implementation
+		Random rand = new Random();				// random variable generation
+		int rand_item = 0;						// random value that is generated 
+		Boolean rand_bool = false;				// random bool that determines if variable will be positive or negative
+		Boolean rand_bool_2 = false;
+		double rand_double = 0.00;				// double generated from rand_item 
+		double initial_U = 1.02;				// possible initial value for the Universal currency
+		Boolean[] checkNeg = new Boolean[2];	// array used to keep track of when a generated value changes sign (+ or -)
+						
+		int count = 0;							// counts how many times a positive or negative value shows up in a row
+		double myScaler= 0;						// scaled value derived based on count
+		double graph = 0.00;					// value between -1 and 1. based on scaler value and arr_U value
+				
+		double[] arr_U = new double[600];		// array holding values of currency at a given time 
+				
+		arr_U[0] = initial_U;		
+			
+				// Generate random values and update array with new values
+				for (int i = 1; i < 600; i ++) {
+					
+					System.out.print(i + ".) ");
+
+					rand_item = rand.nextInt(8);
+					//System.out.print("Rand_Item = " + rand_item + ",\t\t");
+					rand_double = (double)rand_item/1000;
+					System.out.print("Rand_Double = " + rand_double + ",\t\t");
+					rand_bool = rand.nextBoolean();
+					rand_bool_2 = rand.nextBoolean();
+					System.out.print("Rand_Bool = " + rand_bool + "\t");
+					
+					// Decide if this value will be negative or positive
+					// trends:
+					// to generate a positive trend 3/4 of the time use this condition in if statement: 
+					//	rand_bool == true && rand_bool_2 == true
+					// negative trend 3/4 of the time: 
+					// 	rand_bool == true || rand_bool_2 == true
+					// for half and half: 
+					// 	rand_bool == true
+					if(rand_bool == true || rand_bool_2 == true) {
+						rand_double = rand_double* -1;
+						checkNeg[0] = checkNeg[1];
+						checkNeg[1] = false;
+					}
+					else{
+						checkNeg[0] = checkNeg[1];
+						checkNeg[1] = true;
+					}
+					
+					// Update count based on if the sign of the random value changed 
+					if(checkNeg[0] == checkNeg[1]){
+						count++;
+					}
+					else {
+						count = 1;
+					}
+					
+					// Get value of scaler
+					myScaler = Scaler(count);
+					System.out.print("Count = "+ count + ",\t");
+					
+					// Calculate value of the graph based on scaler and amount changed (random in this case)
+					graph += myScaler * rand_double;
+					System.out.print("Graph = "+ graph + ",\t\t");
+
+					// New value for the currncy is equal to previous value plus amount that changed (random in this case)
+					arr_U[i] = arr_U[i-1] + rand_double;
+					System.out.println("ArrayU[" + i + "] = " + arr_U[i]);
+					
+					
+
+				}
+				
+
+			}
+			// TODO Auto-generated method stub
+
+}

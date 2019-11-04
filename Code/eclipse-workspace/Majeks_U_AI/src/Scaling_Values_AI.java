@@ -5,6 +5,9 @@ import java.util.*;
 public class Scaling_Values_AI {
 
 	
+	// Function returns the weighted value of the scaler based on number of occurrances
+	// Many positive occurances increase magnitude towards 1 
+	// Many negative occurances increase magnitude towards -1   
 	public static double Scaler(int count) {
 		double scaler = 0.0;
 		
@@ -35,13 +38,13 @@ public class Scaling_Values_AI {
 
 		
 		
-		
+		// Main function
 		public static void main(String[] args) {
 			// TODO Auto-generated method stub
 			
 			Scanner cin = new Scanner(System.in);
+			// Declare variables used to generate a random input value for this implementation
 			Random rand = new Random();
-			
 			int rand_item = 0;
 			Boolean rand_bool = false;
 			double rand_double = 0.00;
@@ -49,10 +52,8 @@ public class Scaling_Values_AI {
 			int count = 0;
 			double myScaler= 0;
 			Boolean[] checkNeg = new Boolean[2];
-			
 			double graph = 0.00;
-			
-			double[] arr_U = new double[600];
+			double[] arr_U = new double[6];
 			
 			
 			arr_U[0] = initial_U;

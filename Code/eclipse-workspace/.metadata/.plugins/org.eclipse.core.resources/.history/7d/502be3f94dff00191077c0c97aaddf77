@@ -1,0 +1,110 @@
+package Application;
+
+import java.util.*;
+
+public class Scaling_Vlaues_Ai {
+	
+	// Function returns the weighted value of the scaler based on number of occurrences
+		public static double Scaler(int count) {
+			double scaler = 0.0;
+			
+			if (count  < 6 ) {
+				scaler = .5;
+			}
+			else if(count < 11) {
+				scaler = 1.0;
+			}
+			else if(count < 21) {
+				scaler = 2.5;
+			}
+			else if(count < 51) {
+				scaler = 5.0;
+			}
+			else if (count < 101) {
+				scaler = 10.0;
+			}
+			else {
+				scaler = 15.0;
+			}
+			return scaler;
+		}
+
+
+			
+			
+			// Main function
+			public static void main(String[] args) {
+				// TODO Auto-generated method stub
+				
+				Scanner cin = new Scanner(System.in);
+				// Declare variables used to generate a random input value for this implementation
+				Random rand = new Random();				// random variable generation
+				int rand_item = 0;						// random value that is generated 
+				Boolean rand_bool = false;				// random bool that determines if variable will be positive or negative
+				double rand_double = 0.00;				// double generated from rand_item 
+				double initial_U = 1.02;				// possible initial value for the Universal currency
+				Boolean[] checkNeg = new Boolean[2];	// array used to keep track of when a generated value changes sign (+ or -)
+				
+				
+				int count = 0;							// counts how many times a positive or negative value shows up in a row
+				double myScaler= 0;						// scaled value derived based on count
+				double graph = 0.00;					// value between -1 and 1. based on scaler value and arr_U value
+				
+				double[] arr_U = new double[6];		// array holding values of currency at a given time 
+				
+				arr_U[0] = initial_U;		
+				
+				// Generate radom values and update array with new values
+				for (int i = 1; i < 6; i ++) {
+					
+					System.out.print(i + ".) ");
+
+					rand_item = rand.nextInt(5);
+					System.out.print("Rand_Item = " + rand_item + ",\t\t");
+					rand_double = (double)rand_item/1000;
+					System.out.print("Rand_Double = " + rand_double + ",\t\t");
+					rand_bool = rand.nextBoolean();
+					System.out.print("Rand_Bool = " + rand_bool + "\t");
+					
+					
+					if(rand_bool == true)
+					{
+						rand_double = rand_double* -1;
+						checkNeg[0] = checkNeg[1];
+						checkNeg[1] = false;
+					}
+					else
+					{
+						checkNeg[0] = checkNeg[1];
+						checkNeg[1] = true;
+					}
+					
+					
+					if(checkNeg[0] == checkNeg[1])
+					{
+						count++;
+					}
+					else
+					{
+						count = 1;
+					}
+					
+					myScaler = Scaler(count);
+					System.out.print("Count = "+ count + ",\t");
+					
+					graph += myScaler * rand_double;
+					System.out.print("Graph = "+ graph + ",\t\t");
+
+					
+					arr_U[i] = arr_U[i-1] + rand_double;
+					System.out.println("ArrayU[" + i + "] = " + arr_U[i]);
+					
+					
+
+				}
+				
+
+			}
+			// TODO Auto-generated method stub
+
+}
