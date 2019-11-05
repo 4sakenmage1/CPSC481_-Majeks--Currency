@@ -11,19 +11,19 @@ public class Scaling_Values_AI {
 	public static double Scaler(int count) {
 		double scaler = 0.0;
 		
-		if (count  == 1)
+		if (count>= 1 && count <= 10)
 		{
 			scaler = .5;
 		}
-		else if(count == 2)
+		else if (count>= 11 && count <= 25)
 		{
 			scaler = 1.0;
 		}
-		else if(count == 3)
+		else if (count>= 26 && count <= 50)
 		{
 			scaler = 2.5;
 		}
-		else if(count == 4)
+		else if (count>= 51 && count <= 100)
 		{
 			scaler = 5.0;
 		}

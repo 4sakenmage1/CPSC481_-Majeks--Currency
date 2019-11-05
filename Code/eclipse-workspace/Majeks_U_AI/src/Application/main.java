@@ -69,15 +69,38 @@ public class main {
 		//File Creation and access
 		out = new FileWriter("Values.csv");
 				
-		for (int row = 0; row < 19; row++)
+		for (int row = 0; row < 20; row++)
 		{
-			for (int col = 0; col < 19; col++)
+			for (int col = 0; col < 20; col++)
 			{
+				if(row == 0)
+				{
+					//display currency ISO
+					out.write("ISO- " + col);
+
+					
+				}
+				else if(col == 0)
+				{
+					//display currency ISO
+					out.write("ISO-" + row);
+
+					
+				}
+				else if(row == 0 && col == 0)
+				{
+					//display currency ISO
+					out.write("UMC Conversion table " + );
+
+					
+				}
+			
+				
 				
 				System.out.print("{"+ dtf4.format(conversionTable[row][col]) + "}, ");
 				out.write(String.valueOf(conversionTable[row][col]));
 				
-				if(col != 19 && row != 19)
+				if(col != 20 && row != 20)
 				{
 					out.write(",");
 				}
