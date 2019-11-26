@@ -8,25 +8,25 @@ public class Scaling_Vlaues_Ai {
 	public static double Scaler(int count, double graph, double magnitude) {
 		
 		double scaler = 0.0;
-		if (count  < 5 ) {
+		if (count  < 2 ) {
 			scaler = .50;
 		}
-		else if(count < 10) {
+		else if(count < 3) {
 			scaler = 1.0;
 		}
-		else if(count < 20) {
+		else if(count < 4) {
 			scaler = 2.5;
 		}
-		else if(count < 50) {
+		else if(count < 5) {
 			scaler = 5.0;
 		}
-		else if (count < 100) {
+		else if (count < 10) {
 			scaler = 10.0;
 		}
 		else {
 			scaler = 15.0;
 		}
-		graph += scaler * magnitude;
+		graph += (-1 *scaler) * magnitude;
 
 		if (graph <= -1.0) {
 			//System.out.print("graph value is lower than the expected -1");
@@ -51,7 +51,7 @@ public class Scaling_Vlaues_Ai {
 		Boolean rand_bool = false;				// random bool that determines if variable will be positive or negative
 		Boolean rand_bool_2 = false;
 		double rand_double = 0.00;				// double generated from rand_item 
-		double initial_U = 1.02;				// possible initial value for the Universal currency
+		double initial_U = 1.002;				// possible initial value for the Universal currency
 		Boolean[] checkNeg = new Boolean[2];	// array used to keep track of when a generated value changes sign (+ or -)
 						
 		int count = 0;							// counts how many times a positive or negative value shows up in a row
@@ -70,7 +70,7 @@ public class Scaling_Vlaues_Ai {
 			rand_double = (double)rand_item/1000;
 			System.out.print("Rand_Double (magnitude) = " + rand_double + ",\t\t");
 			rand_bool = rand.nextBoolean();
-			rand_bool_2 = rand.nextBoolean();
+			//rand_bool_2 = rand.nextBoolean();
 					
 			// Decide if this value will be negative or positive
 			// trends:

@@ -1,0 +1,16 @@
+Element	Curreny	ISO	From $				
+0	United States Dollar*	USD	1.000				
+1	Euro*	EUR	0.908				
+2	Pound Sterling*	GBP	0.775				
+3	Canadian Dollar*	CAD	1.330				
+4	Swiss Frank*	CHF	0.997				
+5	Japanese Yen	JPY	109.032				
+6	Australian Dollar	AUD	1.476				
+7	Hong Kong Dollar	HKD	7.820				
+8	New Zealand Dollar	NZD	1.550				
+9	Swedish Krona	SEK	9.641				
+10	South Korean Won	KRW	"1,172.420"				
+11	Singapore Dollar	SGD	1.365				
+12	Norwegian Dollar	NOK	9.180				
+13	Mexican Peso	MXN	19.440				
+14	Majeks Currency	MUX	1.002				

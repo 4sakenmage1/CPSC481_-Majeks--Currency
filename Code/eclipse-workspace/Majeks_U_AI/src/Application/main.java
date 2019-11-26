@@ -8,10 +8,11 @@ import java.text.*;
 
 public class main {
 
-	static double[] dollarDataSet = { 1,0.91,106.82,0.81,1.48,1.33,1,
-			7.84,1.58,9.84,1196.35,1.38,9.09,19.54,71.01,64.72,15.07,5.71,4.05 };
+	static double[] dollarDataSet = { 1, .908, .775, 1.33, .997, 
+			109.032, 1.476, 7.820, 1.550, 9.641, 1172.420, 1.365, 9.180, 19.440, 1.002  };
 	static double[][] conversionTable = new double[dollarDataSet.length][dollarDataSet.length];
-	
+	static String[] ISOTable =  {"USD", "EUR", "GBP", "CAD", "CHF",
+			"JPY","AUD","HKD","NZD","SEK","KRW","SGD","NOK","MXN","MUX",}; 
 	//static FileInputStream in = null;
     static FileWriter out = null;
 	
@@ -26,16 +27,16 @@ public class main {
 		
 		
 		//Initialize Data set
-		for (int i = 0; i < 19; i++)
+		for (int i = 0; i < 15; i++)
 		{
 			//System.out.print(dollarDataSet[i] + " ");
 		}
 		System.out.println();
 		System.out.println();
 		
-		for (int row = 0; row < 19; row++)
+		for (int row = 0; row < 15; row++)
 		{
-			for (int col = 0; col < 19; col++)
+			for (int col = 0; col < 15; col++)
 			{
 				conversionTable[row][col] = 0.00;
 				//System.out.print(conversionTable[row][col] + " ");
@@ -57,9 +58,9 @@ public class main {
 		//Assign Remaining values based off of dollar conversions (determined from dollar Data Set)
 		
 		// int k = 0;
-		for (int row = 1; row < 19; row++)
+		for (int row = 1; row < 15; row++)
 		{
-			for (int col = 1; col < 19; col++)
+			for (int col = 1; col < 15; col++)
 			{
 				conversionTable[col][row] = conversionTable[0][row] / conversionTable[0][col];
 			}
@@ -67,51 +68,61 @@ public class main {
 		
 		
 		//File Creation and access
-		out = new FileWriter("Values.csv");
-				
-		for (int row = 0; row < 20; row++)
+		
+		
+		for(int n = 0; n< 100; n++)
 		{
-			for (int col = 0; col < 20; col++)
+			out = new FileWriter("ConversionTable"+ n +".csv");
+
+			int k = 0;
+			int l = 0;
+			int i = 0;
+			int j = 0;
+				
+			for (int row = 0; row < 16; row++)
 			{
-				if(row == 0)
+				for (int col = 0; col < 16; col++)
 				{
+					if(row == 0 && col == 0)
+					{
 					//display currency ISO
-					out.write("ISO- " + col);
-
-					
-				}
-				else if(col == 0)
-				{
-					//display currency ISO
-					out.write("ISO-" + row);
-
-					
-				}
-				else if(row == 0 && col == 0)
-				{
-					//display currency ISO
-					out.write("UMC Conversion table " + );
-
-					
-				}
+					out.write("ISO");
+					System.out.print("ISO \t");	
+					}
+					else if(row == 0)
+					{
+						//display currency ISO
+						out.write(ISOTable[k]);
+						System.out.print(ISOTable[k++] + "\t");
+					}
+					else if(col == 0)
+					{
+						//display currency ISO
+						out.write(ISOTable[l]);
+						System.out.print(ISOTable[l++] + "\t");
+					}
+					else
+					{
+						//display Conversion
+						out.write(String.valueOf(conversionTable[row-1][col-1]) );
+						System.out.print("{"+ dtf4.format(conversionTable[row-1][col-1]) + "}, ");
+					}
 			
+					//out.write(String.valueOf(conversionTable[row][col]));
 				
-				
-				System.out.print("{"+ dtf4.format(conversionTable[row][col]) + "}, ");
-				out.write(String.valueOf(conversionTable[row][col]));
-				
-				if(col != 20 && row != 20)
-				{
-					out.write(",");
+					if(col != 16 && row != 16)
+					{
+						out.write(",");
+					}		
 				}
-
-			}
-			out.write("\n");
-			System.out.println();
+				out.write("\n");
+				System.out.println();
 		}
 		
 		out.close();
 		System.out.println("File Closed!");
+		
+		}
 
 	}
 
