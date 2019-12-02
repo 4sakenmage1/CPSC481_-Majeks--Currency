@@ -1,7 +1,5 @@
-INDEX VERSION 1.4+C:\Users\Sami Halwani\eclipse-workspace\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-1374340756.index
-886065097.index
-4077805990.index
-368044301.index
-3156973300.index
-669846889.index
+INDEX VERSION 1.4+E:\Fall2019\CPSC481_-Majeks--Currency\Code\eclipse-workspace\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1935003180.index
+2703016282.index
+1795827416.index
+1079929708.index

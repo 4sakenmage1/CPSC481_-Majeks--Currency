@@ -1,0 +1,54 @@
+package Application;
+import java.util.Scanner;
+
+
+
+public class Currency {
+	
+	
+	String currName;
+	String ISO;
+	double valueFromDollar;
+	
+	public Currency nextPtr = null;
+	public Currency head = null;
+	
+	public Currency(String currName, String ISO, double valueFromDollar) {
+		this.currName = currName;
+		this.ISO = ISO;
+		this.valueFromDollar = valueFromDollar;
+		
+	}
+	
+	public void AddCurrency(Currency head) {
+		Scanner inputScanner = new Scanner(System.in); // input
+		
+		System.out.print("Please Input the Currency Name: ");
+		String tempCurrName = inputScanner.nextLine();
+		String tempISO = inputScanner.next();
+		Double tempValueFromDollar = inputScanner.nextDouble();
+		
+		
+		
+		
+		if(head == null) {
+			head = new Currency(tempCurrName, tempISO, tempValueFromDollar);
+		}
+		else {
+			Currency currentPtr = head;
+			
+			while(currentPtr.nextPtr != null)
+			{
+				currentPtr = currentPtr.nextPtr;
+			}
+			currentPtr.nextPtr = new Currency(tempCurrName, tempISO, tempValueFromDollar);
+			
+		}
+	}
+	public void PrintCurrencyValue(Currency head, String ISO) {
+		
+	}
+	
+	
+
+}
