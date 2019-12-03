@@ -104,8 +104,7 @@ public class Currency {
 		PrintCurrentList(head);
 		System.out.println("Please Select a ISO from the list: ");
 		String tempISO = inputScanner.next();
-		System.out.println(tempISO);
-		boolean ToF = true;
+		boolean ToF = false;
 		Currency currentPtr = head;
 		
 		if(currentPtr != null) {

@@ -101,23 +101,21 @@ public class Currency {
 	}
 	
 	public void PrintCurrencyValue(Currency head) {
+		
 		PrintCurrentList(head);
 		System.out.println("Please Select a ISO from the list: ");
 		String tempISO = inputScanner.next();
-		System.out.println(tempISO);
-		boolean ToF = true;
+		boolean ToF = false;
 		Currency currentPtr = head;
 		
 		if(currentPtr != null) {
 			while(currentPtr != null)
 			{
-				if(tempISO == currentPtr.ISO)
+				if(currentPtr.ISO == tempISO)
 				{
 					System.out.println("The current value of " + currentPtr.currName + "[" + currentPtr.ISO + "] is " + currentPtr.value +"\n");
 					ToF = true;
-					break;
 				}
-				//System.out.println(currentPtr.ISO);
 				currentPtr = currentPtr.nextPtr;
 			}
 			if(ToF == false) {

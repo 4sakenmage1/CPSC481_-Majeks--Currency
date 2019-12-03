@@ -41,7 +41,7 @@ public class main {
 			currency.AddCurrency(currency.head, tempName, tempISO, tempVal);
 		}
 		
-		//currency.PrintCurrentList(currency);
+		currency.PrintCurrentList(currency);
 		
 		
 		// Main menu
@@ -50,7 +50,7 @@ public class main {
 			System.out.println("===========================");
 			System.out.println("Welcome to Majeks Currency!");
 			System.out.println("===========================");
-			System.out.print("1. Display current Currencies \n2.Print Currency Value \n3. What's that? Another Item? \n4. Yes more options for the menu \n5. Exit \n");
+			System.out.print("1. Display current Currencies \n2. Another Item \n3. What's that? Another Item? \n4. Yes more options for the menu \n5. Exit \n");
 			choice = inputScanner.nextInt();
 			
 			switch(choice) {
@@ -61,8 +61,7 @@ public class main {
 				break;
 				
 			case 2: 
-				//System.out.println("You selected 2. Another Item!");
-				currency.PrintCurrencyValue(currency);
+				System.out.println("You selected 2. Another Item!");
 				break;
 				
 			case 3: 
@@ -121,7 +120,7 @@ public class main {
 			for (int col = 1; col < 15; col++)
 			{
 				conversionTable[col][row] = conversionTable[0][row] / conversionTable[0][col];
-				//System.out.println(conversionTable[0][row]+  " / " + conversionTable[0][col] + " = " + conversionTable[col][row]);
+				System.out.println(conversionTable[0][row]+  " / " + conversionTable[0][col] + " = " + conversionTable[col][row]);
 			}
 		}
 
@@ -130,7 +129,7 @@ public class main {
 		//File Creation and access
 		
 		
-		/*for(int n = 0; n< 1; n++)
+		for(int n = 0; n< 1; n++)
 		{
 			out = new FileWriter("ConversionTable"+ (n+1) +".csv");
 
@@ -179,10 +178,10 @@ public class main {
 				System.out.println();
 		}
 		
-		//out.close();
+		out.close();
 		System.out.println("File Closed!");
 		
-		}*/
+		}
 
 	}
 
