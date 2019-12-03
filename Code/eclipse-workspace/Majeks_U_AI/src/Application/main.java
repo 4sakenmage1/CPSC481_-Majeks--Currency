@@ -28,8 +28,11 @@ public class main {
 		
 		Currency currency = new Currency(null, ISOTable[0], ISOTable[0], dollarDataSet[0]);
 		currency.head = currency;
+		System.out.println(currency.head.currName + " has been added to the currencyList");
+
 		
-		for (int i = 1; i < 15; i++) {
+		for (int i = 0; i < 15; i++) {
+			
 			
 			double tempVal = dollarDataSet[i];
 			String tempISO = ISOTable[i];
@@ -116,6 +119,7 @@ public class main {
 			for (int col = 1; col < 15; col++)
 			{
 				conversionTable[col][row] = conversionTable[0][row] / conversionTable[0][col];
+				System.out.println(conversionTable[0][row]+  " / " + conversionTable[0][col] + " = " + conversionTable[col][row]);
 			}
 		}
 

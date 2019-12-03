@@ -48,8 +48,8 @@ public class Scaling_Vlaues_Ai {
 		// Declare variables used to generate a random input value for this implementation
 		Random rand = new Random();				// random variable generation
 		int rand_item = 0;						// random value that is generated 
-		Boolean rand_bool = false;				// random bool that determines if variable will be positive or negative
-		Boolean rand_bool_2 = false;
+		Boolean rand_bool = false;				// random boolean that determines if variable will be positive or negative
+		//Boolean rand_bool_2 = false;
 		double rand_double = 0.00;				// double generated from rand_item 
 		double initial_U = 1.002;				// possible initial value for the Universal currency
 		Boolean[] checkNeg = new Boolean[2];	// array used to keep track of when a generated value changes sign (+ or -)
