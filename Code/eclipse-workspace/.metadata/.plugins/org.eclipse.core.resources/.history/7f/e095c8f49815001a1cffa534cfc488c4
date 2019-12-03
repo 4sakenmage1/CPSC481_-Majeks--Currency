@@ -4,8 +4,6 @@ import java.io.*;
 import java.math.*;
 import java.text.*;
 
-import Application.Currency;
-
 
 
 public class main {
@@ -26,59 +24,8 @@ public class main {
 		DecimalFormat dtf4 = new DecimalFormat("#.###");
 		
 		
-		Currency currency = new Currency(null, ISOTable[0], ISOTable[0], dollarDataSet[0]);
-		currency.head = currency;
-		
-		for (int i = 1; i < 15; i++) {
-			
-			double tempVal = dollarDataSet[i];
-			String tempISO = ISOTable[i];
-			String tempName = ISOTable[i];
-			
-			currency.AddCurrency(currency.head, tempName, tempISO, tempVal);
-		}
-		
-		currency.PrintCurrentList(currency);
 		
 		
-		// Main menu
-		int choice = 5; 
-		do {
-			System.out.println("===========================");
-			System.out.println("Welcome to Majeks Currency!");
-			System.out.println("===========================");
-			System.out.print("1. Item \n2. Another Item \n3. What's that? Another Item? \n4. Yes more options for the menu \n5. Exit \n");
-			choice = inputScanner.nextInt();
-			
-			switch(choice) {
-			
-			case 1: 
-				System.out.println("Display current ");
-				break;
-				
-			case 2: 
-				System.out.println("You selected 2. Another Item!");
-				break;
-				
-			case 3: 
-				System.out.println("You selected 3!");
-				break;
-				
-			case 4: 
-				System.out.println("You selected 4!");
-				break;
-				
-			case 5: 
-				System.out.println("Thank you for using Majeks Currency, See you later!");
-				break;
-				
-			default: 
-				System.out.println("Invalid input");
-				break;
-				
-			}
-		} while (choice != 5);
-
 		//Initialize Data set
 		for (int i = 0; i < 15; i++)
 		{
@@ -118,13 +65,12 @@ public class main {
 				conversionTable[col][row] = conversionTable[0][row] / conversionTable[0][col];
 			}
 		}
-
 		
 		
 		//File Creation and access
 		
 		
-		for(int n = 0; n< 1; n++)
+		for(int n = 0; n< 100; n++)
 		{
 			out = new FileWriter("ConversionTable"+ (n+1) +".csv");
 

@@ -9,8 +9,6 @@ public class Currency {
 	String currName;
 	String ISO;
 	double valueFromDollar;
-	double MUX_value;
-	
 	
 	public Currency nextPtr = null;
 	public Currency head = null;
@@ -20,10 +18,9 @@ public class Currency {
 		this.currName = currName;
 		this.ISO = ISO;
 		this.valueFromDollar = valueFromDollar;
-		this.MUX_value = 0.0;
 	}
 	
-	/*public int CurrencyCount(Currency head)
+	public int CurrencyCount(Currency head)
 	{
 		int count = 0;
 		Currency currentPtr = head;
@@ -40,7 +37,7 @@ public class Currency {
 			count = 0;
 		}
 		return count; 
-	}	*/
+	}	
 	
 	public void AddCurrency(Currency head, String currName, String ISO, double valueFromDollar) {
 		/*System.out.print("Please Input the Currency Name: ");
@@ -68,7 +65,7 @@ public class Currency {
 			}
 			
 			if(ToF == true) {
-				currentPtr.nextPtr = new Currency(currentPtr.head, currName, ISO, valueFromDollar);
+				currentPtr.nextPtr = new Currency(head, currName, ISO, valueFromDollar);
 				System.out.println(currName + " has been added to the currencyList");
 			}
 			else {
@@ -127,46 +124,8 @@ public class Currency {
 		}
 	}
 	
-	public void RunIterations(Currency head) {
-		
-		System.out.print("Please Enter the number of Iterations you would like to run: ");
-		int tempNumOfIterations = inputScanner.nextInt();
-		
-		for(int i = 0; i < tempNumOfIterations; i++) {
-			Scaling_Values(head);
-			System.out.println("Iteration [" + (i+1)+ "] complete!");
-			
-		}
-		System.out.println("All " + tempNumOfIterations+ " succesfully completed!");		
-	}
 	
-	public void PrintCurrencyConversion(Currency head) {
-		PrintCurrentList(head);
-		System.out.println("Please Select 2 ISOs from the Currency List: ");
-		System.out.print("From [ISO]: ");
-		String ISO_1 = inputScanner.next();
-		
-		System.out.print("To [ISO]: ");
-		String ISO_2 = inputScanner.next();
-		
-		
-	}
-	
-	
-	private double CompareValues(Currency head, String ISO_1, String ISO_2) {
-		double conversion = 0.0;
-		
-		for(int i = 0; i <2; i++)
-		{
-		}
-	
-		return conversion;
-	}
-	
-	private void Scaling_Values (Currency head) {	
-	}
-	
-	private boolean CheckList(Currency currentPtr, String currName, String ISO, double valueFromDollar) {
+	boolean CheckList(Currency currentPtr, String currName, String ISO, double valueFromDollar) {
 		boolean ToF = false;
 		if(currentPtr.currName == currName || currentPtr.ISO == ISO || currentPtr.valueFromDollar == valueFromDollar) {
 			ToF = true;
