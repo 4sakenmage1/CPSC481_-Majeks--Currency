@@ -80,7 +80,7 @@ public class Currency {
 		
 		System.out.println("Currency-Name[ISO]");
 		if(currentPtr != null) {
-			while(currentPtr != null)
+			while(currentPtr.nextPtr != null)
 			{
 				if(currentPtr.ISO == ISO)
 				{
@@ -97,15 +97,15 @@ public class Currency {
 	}
 	
 	public void PrintCurrencyValue(Currency head) {
-		
 		PrintCurrentList(head);
 		System.out.println("Please Select a ISO from the list: ");
 		String tempISO = inputScanner.next();
 		boolean ToF = false;
+		
 		Currency currentPtr = head;
 		
 		if(currentPtr != null) {
-			while(currentPtr != null)
+			while(currentPtr.nextPtr != null)
 			{
 				if(currentPtr.ISO == ISO)
 				{
@@ -122,6 +122,9 @@ public class Currency {
 		{
 			System.out.println("Cannot Find ISO is Chain! Chain is Empty!");
 		}
+		
+		
+		
 	}
 	
 	
