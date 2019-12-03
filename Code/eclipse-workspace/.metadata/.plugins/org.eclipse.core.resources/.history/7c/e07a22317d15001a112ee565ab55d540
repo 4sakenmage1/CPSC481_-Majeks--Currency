@@ -47,9 +47,7 @@ public class Currency {
 		
 		System.out.print("Please Input the Currency Name: ");
 		String tempCurrName = inputScanner.nextLine();
-		System.out.print("Please Input the ISO: ");
 		String tempISO = inputScanner.next();
-		System.out.print("Please Input the ValueFromDollar: ");
 		Double tempValueFromDollar = inputScanner.nextDouble();
 		
 		if(head == null) {

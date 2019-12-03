@@ -72,7 +72,7 @@ public class main {
 		
 		for(int n = 0; n< 100; n++)
 		{
-			out = new FileWriter("ConversionTable"+ (n+1) +".csv");
+			out = new FileWriter("ConversionTable"+ n +".csv");
 
 			int k = 0;
 			int l = 0;
