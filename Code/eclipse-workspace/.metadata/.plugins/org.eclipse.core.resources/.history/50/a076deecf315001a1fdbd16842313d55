@@ -225,7 +225,7 @@ public class Currency {
 						MUX_Ptr = MUX_Ptr.nextPtr;
 					}
 					average = (average/5);
-					System.out.println(average);
+					//System.out.println(average);
 					
 					if(average <= currentPtr.value) 
 					{

@@ -212,7 +212,6 @@ public class Currency {
 				if(currentPtr.ISO.equals("USD"))
 				{
 					//do nothing
-					System.out.println("Ignore " + currentPtr.ISO);
 				}
 				else if (currentPtr.ISO.equals("MUX"))
 				{
@@ -231,11 +230,7 @@ public class Currency {
 					{
 						//System.out.print("Rand_Bool made this Positive \t");
 						double difference = average - currentPtr.value;
-						System.out.println("Difference is "  + difference);
-						
 						currentPtr.MUX_value = Scaler(currentPtr.count, currentPtr.MUX_value, difference);
-						System.out.println("MUX Value is "  + currentPtr.MUX_value);
-
 						currentPtr.checkNeg[0] = currentPtr.checkNeg[1];
 						currentPtr.checkNeg[1] = false;
 
@@ -244,11 +239,7 @@ public class Currency {
 					{						
 						//System.out.print("Rand_Bool made this negative \t");
 						double difference = average - currentPtr.value;
-						System.out.println("Difference is "  + difference);
-
 						currentPtr.MUX_value = Scaler(currentPtr.count, currentPtr.MUX_value, difference);
-						System.out.println("MUX Value is "  + currentPtr.MUX_value);
-
 						currentPtr.checkNeg[0] = currentPtr.checkNeg[1];
 						currentPtr.checkNeg[1] = true;
 					}

@@ -225,7 +225,7 @@ public class Currency {
 						MUX_Ptr = MUX_Ptr.nextPtr;
 					}
 					average = (average/5);
-					System.out.println(average);
+					//System.out.println(average);
 					
 					if(average <= currentPtr.value) 
 					{
@@ -234,7 +234,7 @@ public class Currency {
 						System.out.println("Difference is "  + difference);
 						
 						currentPtr.MUX_value = Scaler(currentPtr.count, currentPtr.MUX_value, difference);
-						System.out.println("MUX Value is "  + currentPtr.MUX_value);
+						//System.out.println("MUX Value is "  + currentPtr.MUX_value);
 
 						currentPtr.checkNeg[0] = currentPtr.checkNeg[1];
 						currentPtr.checkNeg[1] = false;
@@ -244,10 +244,10 @@ public class Currency {
 					{						
 						//System.out.print("Rand_Bool made this negative \t");
 						double difference = average - currentPtr.value;
-						System.out.println("Difference is "  + difference);
+						//System.out.println("Difference is "  + difference);
 
 						currentPtr.MUX_value = Scaler(currentPtr.count, currentPtr.MUX_value, difference);
-						System.out.println("MUX Value is "  + currentPtr.MUX_value);
+						//System.out.println("MUX Value is "  + currentPtr.MUX_value);
 
 						currentPtr.checkNeg[0] = currentPtr.checkNeg[1];
 						currentPtr.checkNeg[1] = true;

@@ -50,7 +50,7 @@ public class main {
 			System.out.println("===========================");
 			System.out.println("Welcome to Majeks Currency!");
 			System.out.println("===========================");
-			System.out.print("1. Display current Currencies \n2. Print Currency Value \n3. Compare Two Currency Values \n4. Run Iterations \n5. Print Current Conversion Table\n6. Should you Invest? \n7. --- \n8. Exit \n");
+			System.out.print("1. Display current Currencies \n2. Print Currency Value \n3. Compare Two Currency Values \n4. Run Iterations \n5. Exit \n");
 			choice = inputScanner.nextInt();
 			
 			switch(choice) {
@@ -76,25 +76,15 @@ public class main {
 				break;
 				
 			case 5: 
-				
-				break;
-				
-			case 6:
-	
-				
-			case 7:
-				break;
-			
-			case 8:
 				System.out.println("Thank you for using Majeks Currency, See you later!");
 				break;
 				
-			default:
+			default: 
 				System.out.println("Invalid input");
 				break;
 				
 			}
-		} while (choice != 8);
+		} while (choice != 5);
 
 		//Initialize Data set
 		for (int i = 0; i < 15; i++)
