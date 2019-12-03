@@ -216,8 +216,6 @@ public class Currency {
 		
 	}
 	
-	//public void PrintCurrencyTable(head);
-	
 	private void CompareValues(Currency head, String ISO_1, String ISO_2) {	//Working
 		double conversion = 0.0;
 		double tempISO[] = {0,0};
@@ -330,15 +328,13 @@ public class Currency {
 					if(rand_bool == true) {
 						//System.out.print("Rand_Bool made this negative \t");
 						rand_double = rand_double* -1;
-						if(currentPtr.value >= .05)
-							currentPtr.value =  currentPtr.value+ rand_double;
+						currentPtr.value =  currentPtr.value+ rand_double;
 						
 					}
 					else
 					{
 						//System.out.print("Rand_Bool made this Positive \t");
-						if(currentPtr.value >= .05)
-							currentPtr.value =  currentPtr.value+ rand_double;
+						currentPtr.value =  currentPtr.value+ rand_double;
 					}
 				}
 				currentPtr = currentPtr.nextPtr;

@@ -88,7 +88,7 @@ public class main {
 				break;
 				
 			}
-		} while (choice != 6);
+		} while (choice != 8);
 
 		//Initialize Data set
 		for (int i = 0; i < 15; i++)

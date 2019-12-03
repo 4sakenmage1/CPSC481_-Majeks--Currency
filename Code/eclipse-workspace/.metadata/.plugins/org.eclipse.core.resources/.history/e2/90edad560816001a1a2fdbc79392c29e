@@ -156,68 +156,6 @@ public class Currency {
 		CompareValues(head, ISO_1, ISO_2);
 	}
 	
-	public void Invest(Currency head) { // working
-		Currency currentPtr = head;
-		
-		System.out.println();
-		if(currentPtr != null) {
-			while(currentPtr != null)
-			{
-				
-				if(currentPtr.ISO.equals("MUX"))
-				{
-					System.out.println(currentPtr.currName + "[" + currentPtr.ISO + "] -- MUX Value: " + currentPtr.MUX_value);
-
-					if(currentPtr.MUX_value <= -.75)
-					{
-						System.out.println("You're f*cked if you do, Bro.");
-					}
-					else if(currentPtr.MUX_value <= -.5 && currentPtr.MUX_value > -.75)
-					{
-						System.out.println("Don't Invest");
-					}
-					else if(currentPtr.MUX_value <= -.25 && currentPtr.MUX_value > -.5)
-					{
-						System.out.println("Meh, Not the best. But it could be worse. Probably not though.");
-					}
-					else if(currentPtr.MUX_value <= 0  && currentPtr.MUX_value > -.25)
-					{
-						System.out.println("Could be worse. Sit on it. I would say its okay!");
-					}
-					else if(currentPtr.MUX_value <= .25  && currentPtr.MUX_value > 0)
-					{
-						System.out.println("Wouldn't hurt. Go for it!");
-					}
-					else if(currentPtr.MUX_value <= .5  && currentPtr.MUX_value > .25)
-					{
-						System.out.println("Looking Good! Invest!");
-					}
-					else if(currentPtr.MUX_value <= .75  && currentPtr.MUX_value > .5)
-					{
-						System.out.println("Why haven't you invested? This shit is golden");
-					}
-					else if(currentPtr.MUX_value <= 1  && currentPtr.MUX_value > .75)
-					{
-						System.out.println("BOI, PUT YO DAMN DOLLAR IN THE MUX!!! IT'S GOLDEN HOUR!!!");
-
-					}
-
-				}
-				
-				//System.out.println(currentPtr.currName + "[" + currentPtr.ISO + "]");
-
-				currentPtr = currentPtr.nextPtr;
-			}
-		}
-		else
-		{
-			System.out.println("Chain is Empty!");
-		}
-		
-	}
-	
-	//public void PrintCurrencyTable(head);
-	
 	private void CompareValues(Currency head, String ISO_1, String ISO_2) {	//Working
 		double conversion = 0.0;
 		double tempISO[] = {0,0};
@@ -330,15 +268,13 @@ public class Currency {
 					if(rand_bool == true) {
 						//System.out.print("Rand_Bool made this negative \t");
 						rand_double = rand_double* -1;
-						if(currentPtr.value >= .05)
-							currentPtr.value =  currentPtr.value+ rand_double;
+						currentPtr.value =  currentPtr.value+ rand_double;
 						
 					}
 					else
 					{
 						//System.out.print("Rand_Bool made this Positive \t");
-						if(currentPtr.value >= .05)
-							currentPtr.value =  currentPtr.value+ rand_double;
+						currentPtr.value =  currentPtr.value+ rand_double;
 					}
 				}
 				currentPtr = currentPtr.nextPtr;
