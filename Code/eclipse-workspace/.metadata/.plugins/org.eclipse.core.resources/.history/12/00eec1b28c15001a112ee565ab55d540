@@ -78,7 +78,7 @@ public class Currency {
 		
 		Currency currentPtr = head;
 		
-		System.out.println("Currency-Name[ISO]");
+		System.out.println("");
 		if(currentPtr != null) {
 			while(currentPtr.nextPtr != null)
 			{
