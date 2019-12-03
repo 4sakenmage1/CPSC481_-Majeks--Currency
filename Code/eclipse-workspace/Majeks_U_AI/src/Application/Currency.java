@@ -46,7 +46,7 @@ public class Currency {
 		return count; 
 	}	*/
 	
-	public void AddCurrency(Currency head, String currName, String ISO, double value) {
+	public void AddCurrency(Currency head, String currName, String ISO, double value) { //Working
 		/*System.out.print("Please Input the Currency Name: ");
 		String tempCurrName = inputScanner.nextLine();
 		System.out.print("Please Input the ISO: ");
@@ -81,7 +81,7 @@ public class Currency {
 		}
 	}
 	
-	public void PrintCurrentList(Currency head) {
+	public void PrintCurrentList(Currency head) { //Working
 		
 		Currency currentPtr = head;
 		
@@ -100,26 +100,27 @@ public class Currency {
 		}
 	}
 	
-	public void PrintCurrencyValue(Currency head) {
+	public void PrintCurrencyValue(Currency head) { //Working
 		PrintCurrentList(head);
 		System.out.println("Please Select a ISO from the list: ");
-		String tempISO = inputScanner.next();
-		System.out.println(tempISO);
-		boolean ToF = true;
+		String ISO = inputScanner.next().toUpperCase();
+		Boolean ToF = false;
 		Currency currentPtr = head;
 		
 		if(currentPtr != null) {
 			while(currentPtr != null)
 			{
-				if(tempISO == currentPtr.ISO)
+				if( ISO.equals(currentPtr.ISO))
 				{
+					//System.out.print(ToF);
 					System.out.println("The current value of " + currentPtr.currName + "[" + currentPtr.ISO + "] is " + currentPtr.value +"\n");
 					ToF = true;
 					break;
 				}
-				//System.out.println(currentPtr.ISO);
 				currentPtr = currentPtr.nextPtr;
 			}
+			//System.out.print(ToF);
+
 			if(ToF == false) {
 			System.out.println("ISO does not exist in Chain!\n");
 			}
@@ -143,21 +144,21 @@ public class Currency {
 		System.out.println("All " + tempNumOfIterations+ " succesfully completed!");		
 	}
 	
-	public void PrintCurrencyConversion(Currency head) {
+	public void PrintCurrencyConversion(Currency head) { //Working
 		PrintCurrentList(head);
 		System.out.println("Please Select 2 ISOs from the Currency List: ");
 		System.out.print("From [ISO]: ");
-		String ISO_1 = inputScanner.next();
+		String ISO_1 = inputScanner.next().toUpperCase();
 		
 		System.out.print("To [ISO]: ");
-		String ISO_2 = inputScanner.next();
+		String ISO_2 = inputScanner.next().toUpperCase();
 		
 		CompareValues(head, ISO_1, ISO_2);
 	}
 	
-	private void CompareValues(Currency head, String ISO_1, String ISO_2) {
+	private void CompareValues(Currency head, String ISO_1, String ISO_2) {	//Working
 		double conversion = 0.0;
-		double tempISO[] = {};
+		double tempISO[] = {0,0};
 		boolean ToF[] = {false, false};
 		Currency currentPtr = head;
 	
@@ -167,12 +168,12 @@ public class Currency {
 				if(ToF[0]== true && ToF[1] ==true ) {
 					break;
 				}
-				if(currentPtr.ISO == ISO_1)
+				if(currentPtr.ISO.equals(ISO_1))
 				{
 					tempISO[0] = currentPtr.value;
 					ToF[0] = true;
 				}
-				if(currentPtr.ISO == ISO_2)
+				if(currentPtr.ISO.equals(ISO_2))
 				{
 					tempISO[1] = currentPtr.value;
 					ToF[1] = true;
@@ -193,7 +194,7 @@ public class Currency {
 		
 		if(ToF[0]== true && ToF[1] ==true ) {
 			conversion = (1 / tempISO[0])/(1/tempISO[1]);
-			System.out.println("is [" + tempISO[1] + "]"+ conversion + " per [" + tempISO[0] + "]" );
+			System.out.println("is [" + ISO_2 + "]"+ conversion + " per [" + ISO_1 + "]" );
 		}
 	}
 	

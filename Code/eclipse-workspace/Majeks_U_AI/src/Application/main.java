@@ -50,7 +50,7 @@ public class main {
 			System.out.println("===========================");
 			System.out.println("Welcome to Majeks Currency!");
 			System.out.println("===========================");
-			System.out.print("1. Display current Currencies \n2.Print Currency Value \n3. What's that? Another Item? \n4. Yes more options for the menu \n5. Exit \n");
+			System.out.print("1. Display current Currencies \n2. Print Currency Value \n3. Compare Two Currency Values \n4. Yes more options for the menu \n5. Exit \n");
 			choice = inputScanner.nextInt();
 			
 			switch(choice) {
@@ -66,7 +66,8 @@ public class main {
 				break;
 				
 			case 3: 
-				System.out.println("You selected 3!");
+				//System.out.println("You selected 3!");
+				currency.PrintCurrencyConversion(currency);
 				break;
 				
 			case 4: 

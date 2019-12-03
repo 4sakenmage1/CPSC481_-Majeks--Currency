@@ -1,0 +1,323 @@
+package Application;
+import java.util.Random;
+import java.util.Scanner;
+
+
+
+public class Currency {
+	Scanner inputScanner = new Scanner(System.in); // input
+	
+	String currName;
+	String ISO;
+	double value;
+	double MUX_value;
+	int count;
+	boolean checkNeg[] = {false,false};	// array used to keep track of when a generated value changes sign (+ or -)
+
+	
+	public Currency nextPtr = null;
+	public Currency head = null;
+	
+	public Currency(Currency head, String currName, String ISO, double value) {
+		this.head = head;
+		this.currName = currName;
+		this.ISO = ISO;
+		this.value = value;
+		this.MUX_value = 0.0;
+		this.count = 0;
+		
+	}
+	/*public int CurrencyCount(Currency head)
+	{
+		int count = 0;
+		Currency currentPtr = head;
+		
+		if(currentPtr != null) {
+			while(currentPtr.nextPtr != null)
+			{
+				count++;
+				currentPtr = currentPtr.nextPtr;
+			}
+		}
+		else
+		{
+			count = 0;
+		}
+		return count; 
+	}	*/
+	
+	public void AddCurrency(Currency head, String currName, String ISO, double value) {
+		/*System.out.print("Please Input the Currency Name: ");
+		String tempCurrName = inputScanner.nextLine();
+		System.out.print("Please Input the ISO: ");
+		String tempISO = inputScanner.next();
+		System.out.print("Please Input the value: ");
+		double tempvalue = inputScanner.nextDouble();
+		*/
+		
+		if(head == null) {
+			head = new Currency(head, currName, ISO, value);
+		}
+		else {
+			boolean ToF = true;
+			Currency currentPtr = head;
+			
+			while(currentPtr.nextPtr != null)
+			{
+				if(currentPtr.CheckList(currentPtr, currName, ISO, value)) {
+					ToF = false;
+					break;
+				}
+				currentPtr = currentPtr.nextPtr;
+			}
+			
+			if(ToF == true) {
+				currentPtr.nextPtr = new Currency(currentPtr.head, currName, ISO, value);
+				System.out.println(currName + " has been added to the currencyList");
+			}
+			else {
+				System.out.println("Currency Already Exists Within Chain! ");
+			}
+		}
+	}
+	
+	public void PrintCurrentList(Currency head) {
+		
+		Currency currentPtr = head;
+		
+		System.out.println("Currency-Name[ISO]");
+		if(currentPtr != null) {
+			while(currentPtr != null)
+			{
+				System.out.println(currentPtr.currName + "[" + currentPtr.ISO + "]");
+
+				currentPtr = currentPtr.nextPtr;
+			}
+		}
+		else
+		{
+			System.out.println("Chain is Empty!");
+		}
+	}
+	
+	public void PrintCurrencyValue(Currency head) {
+		PrintCurrentList(head);
+		System.out.println("Please Select a ISO from the list: ");
+		String ISO = inputScanner.next().toUpperCase();
+		Boolean ToF = false;
+		Currency currentPtr = head;
+		
+		if(currentPtr != null) {
+			while(currentPtr != null)
+			{
+				if( ISO.equals(currentPtr.ISO))
+				{
+					ToF = true;
+					//System.out.print(ToF);
+					System.out.println("The current value of " + currentPtr.currName + "[" + currentPtr.ISO + "] is " + currentPtr.value +"\n");
+					ToF = true;
+					break;
+				}
+				currentPtr = currentPtr.nextPtr;
+			}
+			//System.out.print(ToF);
+
+			if(ToF == false) {
+			System.out.println("ISO does not exist in Chain!\n");
+			}
+		}
+		else
+		{
+			System.out.println("Cannot Find ISO is Chain! Chain is Empty!");
+		}
+	}
+	
+	public void RunIterations(Currency head) {
+		
+		System.out.print("Please Enter the number of Iterations you would like to run: ");
+		int tempNumOfIterations = inputScanner.nextInt();
+		
+		for(int i = 0; i < tempNumOfIterations; i++) {
+			Scaling_Values(head);
+			System.out.println("Iteration [" + (i+1)+ "] complete!");
+			
+		}
+		System.out.println("All " + tempNumOfIterations+ " succesfully completed!");		
+	}
+	
+	public void PrintCurrencyConversion(Currency head) {
+		PrintCurrentList(head);
+		System.out.println("Please Select 2 ISOs from the Currency List: ");
+		System.out.print("From [ISO]: ");
+		String ISO_1 = inputScanner.next();
+		
+		System.out.print("To [ISO]: ");
+		String ISO_2 = inputScanner.next();
+		
+		CompareValues(head, ISO_1, ISO_2);
+	}
+	
+	private void CompareValues(Currency head, String ISO_1, String ISO_2) {
+		double conversion = 0.0;
+		double tempISO[] = {};
+		boolean ToF[] = {false, false};
+		Currency currentPtr = head;
+	
+		if(currentPtr != null) {
+			while(currentPtr != null)
+			{
+				if(ToF[0]== true && ToF[1] ==true ) {
+					break;
+				}
+				if(currentPtr.ISO == ISO_1)
+				{
+					tempISO[0] = currentPtr.value;
+					ToF[0] = true;
+				}
+				if(currentPtr.ISO == ISO_2)
+				{
+					tempISO[1] = currentPtr.value;
+					ToF[1] = true;
+				}	
+				currentPtr = currentPtr.nextPtr;
+			}
+		}
+		else
+		{
+			System.out.println("Cannot Find ISO is Chain! Chain is Empty!");
+		}
+		
+		if(ToF[0] == false)
+			System.out.println( ISO_1+ " does not exist in Chain!\n");
+
+		if(ToF[1] == false)
+			System.out.println( ISO_2 + " does not exist in Chain!\n");
+		
+		if(ToF[0]== true && ToF[1] ==true ) {
+			conversion = (1 / tempISO[0])/(1/tempISO[1]);
+			System.out.println("is [" + tempISO[1] + "]"+ conversion + " per [" + tempISO[0] + "]" );
+		}
+	}
+	
+	private void Scaling_Values (Currency head) {
+		Random rand = new Random();				// random variable generation
+		int rand_item = 0;						// random value that is generated 
+		boolean rand_bool = false;				// random bool that determines if variable will be positive or negative
+		double rand_double = 0.00;				// double generated from rand_item 
+
+		Currency currentPtr = head;
+		
+		if(currentPtr != null) {
+			while(currentPtr != null)
+			{
+				if(currentPtr.ISO == "USD")
+				{
+					//do nothing
+				}
+				else if (currentPtr.ISO == "MUX")
+				{
+					Currency MUX_Ptr = head;
+					double average = 0;
+					
+					for(int i = 0; i < 5; i++)
+					{
+						average = average + MUX_Ptr.value;
+						MUX_Ptr = MUX_Ptr.nextPtr;
+					}
+					average = (average/5);
+					
+					if(average <= currentPtr.value) 
+					{
+						//System.out.print("Rand_Bool made this Positive \t");
+						double difference = average - currentPtr.value;
+						currentPtr.MUX_value = Scaler(currentPtr.count, currentPtr.MUX_value, difference);
+						currentPtr.checkNeg[0] = currentPtr.checkNeg[1];
+						currentPtr.checkNeg[1] = false;
+
+					}
+					else
+					{						
+						//System.out.print("Rand_Bool made this negative \t");
+						double difference = average - currentPtr.value;
+						currentPtr.MUX_value = Scaler(currentPtr.count, currentPtr.MUX_value, difference);
+						currentPtr.checkNeg[0] = currentPtr.checkNeg[1];
+						currentPtr.checkNeg[1] = true;
+					}
+					if(checkNeg[0] == checkNeg[1]){
+						currentPtr.count++;
+					}
+					else {
+						currentPtr.count = 1;
+					}
+					
+					currentPtr.value = average;
+				}
+				else {
+					rand_item = rand.nextInt(5);
+					rand_double = (double)rand_item/1000;
+					rand_bool = rand.nextBoolean();
+					if(rand_bool == true) {
+						//System.out.print("Rand_Bool made this negative \t");
+						rand_double = rand_double* -1;
+						currentPtr.value =  currentPtr.value+ rand_double;
+						
+					}
+					else
+					{
+						//System.out.print("Rand_Bool made this Positive \t");
+						currentPtr.value =  currentPtr.value+ rand_double;
+					}
+				}
+				currentPtr = currentPtr.nextPtr;
+			}
+		}
+		else
+		{
+			System.out.println("Chain is Empty!");
+		}
+	}
+		
+	private boolean CheckList(Currency currentPtr, String currName, String ISO, double value) {
+		boolean ToF = false;
+		if(currentPtr.currName == currName || currentPtr.ISO == ISO || currentPtr.value == value) {
+			ToF = true;
+		}
+		return ToF;
+	}
+	
+	private double Scaler(int count, double graph, double magnitude) {
+		
+		double scaler = 0.0;
+		if (count  < 2 ) {
+			scaler = .50;
+		}
+		else if(count < 3) {
+			scaler = 1.0;
+		}
+		else if(count < 4) {
+			scaler = 2.5;
+		}
+		else if(count < 5) {
+			scaler = 5.0;
+		}
+		else if (count < 10) {
+			scaler = 10.0;
+		}
+		else {
+			scaler = 15.0;
+		}
+		graph += (-1 *scaler) * magnitude;
+
+		if (graph <= -1.0) {
+			//System.out.print("graph value is lower than the expected -1");
+			return -1.0;
+		}
+		else if (graph >= 1.0) {
+			//System.out.print("graph value is higher than the expected -1");
+			return 1.0;
+		}
+		
+		return graph;
+	}
+	
+}
