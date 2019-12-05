@@ -10,7 +10,7 @@ import java.util.Scanner;
  * than creating the functions in main.java.
  * 
  * 
- * **********ALL INFORMATION IS STORED INTERNALLY*****
+ * **********ALL INFORMATION IS STORED INTERNALLY********
  * 
  * Class was created as a linked list so that the ADMIN could add currency freely without having
  * to redefine the code and just to the chain.
@@ -185,7 +185,6 @@ public class Currency {
 		int tempNumOfIterations = inputScanner.nextInt();
 		
 		for(int i = 0; i < tempNumOfIterations; i++) {
-			System.out.println("Iteration [" + (i+1)+ "] Started!!");
 			Scaling_Values(head);
 			System.out.println("Iteration [" + (i+1)+ "] complete!");
 			
@@ -329,8 +328,6 @@ public class Currency {
 				{
 					//do nothing
 					System.out.println("Ignore " + currentPtr.ISO);
-					System.out.println("Ignore " + currentPtr.ISO);
-
 				}
 				else if (currentPtr.ISO.equals("MUX"))
 				{
