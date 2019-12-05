@@ -328,7 +328,8 @@ public class Currency {
 				if(currentPtr.ISO.equals("USD"))
 				{
 					//do nothing
-					//SSSSystem.out.println("Ignore " + currentPtr.ISO);
+					System.out.println("Ignore " + currentPtr.ISO);
+					System.out.println("Ignore " + currentPtr.ISO);
 
 				}
 				else if (currentPtr.ISO.equals("MUX"))
