@@ -10,18 +10,11 @@ import Application.Currency;
 
 public class main {
 
-	//Defeault starting values of the Value table
 	static double[] dollarDataSet = { 1, .908, .775, 1.33, .997, 
 			109.032, 1.476, 7.820, 1.550, 9.641, 1172.420, 1.365, 9.180, 19.440, 1.002  };
-	
-	//double not used -- Class implemented in its place.
 	static double[][] conversionTable = new double[dollarDataSet.length][dollarDataSet.length];
-	
-	//ISO Table currently used for Both ISO and currName in class.
 	static String[] ISOTable =  {"USD", "EUR", "GBP", "CAD", "CHF",
-			"JPY","AUD","HKD","NZD","SEK","KRW","SGD","NOK","MXN","MUX",};
-	
-	
+			"JPY","AUD","HKD","NZD","SEK","KRW","SGD","NOK","MXN","MUX",}; 
 	//static FileInputStream in = null;
     static FileWriter out = null;
 	

@@ -9,11 +9,8 @@ import java.util.Scanner;
  * It will be encapsulating a good portion of the functionality for the AI rather
  * than creating the functions in main.java.
  * 
- * 
- * **********ALL INFORMATION IS STORED INTERNALLY********
- * 
  * Class was created as a linked list so that the ADMIN could add currency freely without having
- * to redefine the code and just to the chain.
+ * to redefine the code and just to the chain
  * 
  * The Class its self consists of:
  * 
@@ -207,7 +204,6 @@ public class Currency {
 	
 	//This is our AI. It will study the changes in currency and give advice if
 	//the user should continue investing or not.
-	//I.E... AI Print display
 	public void Invest(Currency head) { // working
 		Currency currentPtr = head;
 		

@@ -4,30 +4,6 @@ import java.util.Scanner;
 
 
 
-/*----------------------Currency Class -------------------------------
- * The Currency class acts as a vehicle for storing local data of the currencies.
- * It will be encapsulating a good portion of the functionality for the AI rather
- * than creating the functions in main.java.
- * 
- * 
- * **********ALL INFORMATION IS STORED INTERNALLY********
- * 
- * Class was created as a linked list so that the ADMIN could add currency freely without having
- * to redefine the code and just to the chain.
- * 
- * The Class its self consists of:
- * 
- * currName = The currency name (Information Stored locally so Actual Currency names are not available)
- * ISO 		= The ISO of the currency (Unique key)
- * value	= The exchange rate of the Currency Object (Relative to Dollar[USD])
- * MUX_vale = Relational Value that AI uses to assess whether the user should invest (Only For U-Currency[MUX])
- * count 	= Keep track of "Hits"  (Used for Scaler function to decide which Scaler to return)
- * CheckNeg = Keep Track of increase or decrease of currency relative to previous value 
- * nextPtr	= Keeps track of next Object Stored in the Chain
- * head 	= Chain list head stored internally to avoid information being public.
- * ---------------------Current Class---------------------------------*/
-
-
 public class Currency {
 	Scanner inputScanner = new Scanner(System.in); // input
 	
@@ -73,14 +49,6 @@ public class Currency {
 	}	*/
 	
 	//Adds a currency to the Chain
-	
-	
-	/*------------------Add Currency--------------------
-	 * Add currency is an all purpose method of adding objects to the chain into local memory.
-	 * The method is made to take in user input value/read in value from a CSV, and load them in
-	 * currently the manual input has been disabled to avoid user intervention.
-	 * -----------------Add Currency -------------------*/
-	
 	public void AddCurrency(Currency head, String currName, String ISO, double value) { //Working
 		/*System.out.print("Please Input the Currency Name: ");
 		String tempCurrName = inputScanner.nextLine();
@@ -116,10 +84,6 @@ public class Currency {
 		}
 	}
 	//Prints the currency list for the viewer
-	
-	/*--------------Print Current List------------------------
-	 * Print all objects in the chain as currName[ISO]
-	 * -------------Print Current List ----------------------*/
 	public void PrintCurrentList(Currency head) { //Working
 		
 		Currency currentPtr = head;
@@ -171,14 +135,6 @@ public class Currency {
 	}
 	
 	//creates new values for currency to replace databases we do not have access too
-	
-	/*-------------------Run Iterations---------------------------
-	 * 
-	 * User defines how many iterations AI will run. Method calls Scaling_Values
-	 * method inside which is the heart of the AI. This portion would be considered out dated
-	 * if automatic API integration is integrated and the AI will iterate based off API pull
-	 * request
-	 * ------------------Run Iterations--------------------------*/
 	public void RunIterations(Currency head) {
 		
 		System.out.print("Please Enter the number of Iterations you would like to run: ");
@@ -207,7 +163,6 @@ public class Currency {
 	
 	//This is our AI. It will study the changes in currency and give advice if
 	//the user should continue investing or not.
-	//I.E... AI Print display
 	public void Invest(Currency head) { // working
 		Currency currentPtr = head;
 		
